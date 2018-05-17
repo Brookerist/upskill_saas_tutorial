@@ -1,4 +1,4 @@
 /* global $ */
 $(document).on('turbolinks:load', function(){
-  $('.alert').delay(500).fadeOut(2000);
+  $('.alert').delay(1000).fadeOut(1000);
 });
