@@ -9,4 +9,5 @@ class PagesController < ApplicationController
   # GET request for /about page
   def about
   end
+  
 end
