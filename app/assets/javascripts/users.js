@@ -1,12 +1,12 @@
-/* global $, Stripe */
+/* global $, Stripe, stripe*/
 
 // Document ready.
 $(document).on('turbolinks:load', function(){ 
-  var theForm = $('#pro_form');
-  var submitBtn = $('#form-submit-btn');
+  var theForm = $('#pro-form');
+  var submitBtn = $('#form-signup-btn');
  
   // Set Stripe public key.
-  Stripe.setPublishableKey( $('meta["stripe-key"]').attr('content') );
+  Stripe.setPublishableKey( $('meta[name="stripe-key"]').attr('content') );
   
   // When user clicks form submit btn.
   submitBtn.click(function(event) {
@@ -14,11 +14,11 @@ $(document).on('turbolinks:load', function(){
 
     event.preventDefault();
   
-  // IF THIS FORM BREAKS, IT'S BECAUSE OF THIS NEXT LINE. 
-    submitBtn.html('<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>').prop('disabled', true);
+  // TODO: implement progress wheel. Below code doesn't work.
+    // submitBtn.html('<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>').prop('disabled', true);
   
-  // DELETE ABOVE AND UNCOMMENT THIS LINE TO RECOVER
-    // submitBtn.val("Processing").prop('disabled', true);
+  // If you ever get that progress wheel working, comment this out.
+    submitBtn.val("Processing").prop('disabled', true);
     
     // Collect credit card fields.
     var ccNum = $('#card_number').val(),
@@ -48,7 +48,7 @@ $(document).on('turbolinks:load', function(){
     }
     
     if (error) {
-      // If there are card errors, don't send to 
+      // If there are card errors, don't send to Stripe.
       submitBtn.prop('disabled', false).val("Sign Up");
     } else {
       // Send card info to Stripe.
@@ -62,17 +62,13 @@ $(document).on('turbolinks:load', function(){
    
     return false;
   });
-  
-  
-  // Stripe will return card token.
+  //Stripe will return a card token.
   function stripeResponseHandler(status, response) {
-    // Get the token from the response
+    //Get the token from the response.
     var token = response.id;
-    
-    // Inject card token as hidden field into form.
-    theForm.append($('<input type="hidden" name="user[stripe_card_token]">').val(token) );
-    
-    // Submit form to Rails app.
+    //Inject the card token in a hidden field.
+    theForm.append( $('<input type="hidden" name="user[stripe_card_token]">').val(token) );
+    //Submit form to our Rails app.
     theForm.get(0).submit();
   }
 });
