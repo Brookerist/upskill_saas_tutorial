@@ -20,3 +20,4 @@ User profiles
 * User should be able to create and view their user profile
 * User profile should have profile picture
 * User should be able to view all user profiles
+
