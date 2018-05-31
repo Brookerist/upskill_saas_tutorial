@@ -47,7 +47,8 @@ gem 'stripe', '1.48.0'
 gem 'figaro', '1.1.1'
 
 # User Paperclip gem for image uploads
-gem 'paperclip', '4.3.6'
+gem 'paperclip', '5.2.0'
+
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
@@ -68,7 +69,12 @@ end
 group :production do
   # Use the PostgreSQL gem for Heroku production servers
   gem 'pg', '0.18.4'
+ 
+  # Accomodations for Heroku S3 and Paperclip
+  gem 'aws-sdk', '~> 2.3'
+
 end
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
