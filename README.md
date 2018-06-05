@@ -15,6 +15,7 @@
   <li>Activerecord associations and Validations</li>
   <li>Paperclip for attachment management</li>
   <li>Devise for authentication and user accounts</li>
+  <li>Stripe integration for ecommerce</li>
   <li>Bootstrap</li>
   <li>HTML</li>
   <li>CSS</li>
