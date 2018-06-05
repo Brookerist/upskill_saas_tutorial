@@ -4,7 +4,7 @@
 <a href="http://upskillcourses.com">Upskill Software-as-a-Service Ruby on Rails App course.</a>
 
 <div>
-  <p>This project was developed in the Cloud9 IDE and functions at 100%. It has also been synced to 
+  <p>This project was developed in the Cloud9 IDE and functions at 100%. It has been synced to 
   Heroku to test production functionality, but photo upload does not function due to additional demands for Paperclip/Amazon S3. </p>
 </div>
 
